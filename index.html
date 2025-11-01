@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuMind - Smart Document Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add PDF.js for proper PDF text extraction -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <!-- Add your Origin Trial Token here -->
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🧠 DocuMind</h1>
+            <p>Your AI Document Assistant • 100% Private • Processed Locally</p>
+        </header>
+        
+        <main>
+            <!-- File Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <h4>Upload Document</h4>
+                        <p>Drag & drop files or click to browse</p>
+                        <p class="upload-formats">Supported: PDF, TXT, DOC, DOCX, PPT, PPTX</p>
+                        <input type="file" id="fileInput" accept=".pdf,.txt,.doc,.docx,.ppt,.pptx" style="display: none;">
+                        <button class="btn btn-outline" id="browseBtn">Browse Files</button>
+                    </div>
+                </div>
+                <div id="fileInfo" class="file-info" style="display: none;">
+                    <span id="fileName"></span>
+                    <button id="removeFile" class="btn btn-secondary">Remove</button>
+                </div>
+            </section>
+
+            <!-- Document Input -->
+            <section class="input-section">
+                <textarea 
+                    id="documentInput" 
+                    placeholder="Paste your document, contract, article, or any text here..."
+                    rows="12"
+                ></textarea>
+                <div class="document-info">
+                    <span id="charCount">0 characters</span>
+                    <button id="clearText" class="btn btn-secondary">Clear</button>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="actions-section">
+                <div class="action-grid">
+                    <button id="summarizeBtn" class="btn btn-primary">
+                        📄 Summarize
+                    </button>
+                    <button id="explainBtn" class="btn btn-info">
+                        🔍 Explain
+                    </button>
+                    <button id="improveBtn" class="btn btn-success">
+                        ✏️ Improve Writing
+                    </button>
+                    <button id="translateBtn" class="btn btn-warning">
+                        🌐 Translate
+                    </button>
+                    <button id="askBtn" class="btn btn-secondary">
+                       ❓ Ask Questions
+                    </button>
+                    <button id="checkGrammarBtn" class="btn btn-light">
+                        ✓ Grammar Check
+                    </button>
+                </div>
+                
+                <!-- Question Input (hidden by default) -->
+                <div id="questionSection" class="question-section" style="display: none;">
+                    <input type="text" id="questionInput" placeholder="Ask anything about this document...">
+                    <button id="submitQuestion" class="btn btn-primary">Ask</button>
+                    <button id="cancelQuestion" class="btn btn-secondary">Cancel</button>
+                </div>
+
+                <!-- Translate Options (hidden by default) -->
+                <div id="translateSection" class="translate-section" style="display: none;">
+                    <select id="targetLanguage">
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                    </select>
+                    <button id="confirmTranslate" class="btn btn-primary">Translate</button>
+                    <button id="cancelTranslate" class="btn btn-secondary">Cancel</button>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section class="results-section">
+                <div id="results" class="results-container">
+                    <div class="welcome-message">
+                        <h3>Welcome to DocuMind!</h3>
+                        <p>Paste any document and try these features:</p>
+                        <ul>
+                            <li>📄 <strong>Summarize</strong> long contracts or articles</li>
+                            <li>🔍 <strong>Explain</strong> complex legal or technical terms</li>
+                            <li>✏️ <strong>Improve</strong> your writing and fix grammar</li>
+                            <li>🌐 <strong>Translate</strong> between multiple languages</li>
+                            <li>❓ <strong>Ask questions</strong> about your document content</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Example Documents -->
+            <section class="examples-section">
+                <h3>Try with sample text:</h3>
+                <div class="example-buttons">
+                    <button class="btn btn-outline" data-example="legal">📝 Rental Agreement</button>
+                    <button class="btn btn-outline" data-example="technical">⚙️ Technical Documentation</button>
+                    <button class="btn btn-outline" data-example="article">📰 News Article</button>
+                    <button class="btn btn-outline" data-example="email">✉️ Business Email</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
